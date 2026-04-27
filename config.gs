@@ -1,4 +1,4 @@
-const CLASS_GROUPS = ['2n_A', '2n_B'];
+const CLASS_GROUPS = ['2n A', '2n B'];
 
 /**
  * CONFIGURATION & CONSTANTS
