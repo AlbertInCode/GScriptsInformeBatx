@@ -19,13 +19,13 @@ const DataParser = {
     extractSubjectNames: function (row) {
         const rawValues = Utils.sliceRowData(row);
 
-        return Utils.filterByStride(rawValues, 0).map(name => name.replace('\n', ' '));
+        return rawValues.map(name => name.replace('\n', ' '));
     },
 
     extractSubjectsData: function (row, subjectNames) {
         const subjectsMap = {};
         const rawValues = Utils.sliceRowData(row);
-        const valuesPerSubject = Utils.filterByStride(rawValues, 0);
+        const valuesPerSubject = rawValues;
 
         valuesPerSubject.forEach((value, index) => {
             if (subjectNames[index]) {
