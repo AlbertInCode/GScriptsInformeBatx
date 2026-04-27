@@ -12,6 +12,13 @@ const Utils = {
     },
 
     getFormattedDates: function (dateObj) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const today = new Date();
 
+        return {
+            currentDate: today.toLocaleDateString(CONFIG.DATE_LOCALE, options),
+            currentDayOfWeek: today.toLocaleDateString(CONFIG.DATE_LOCALE, { weekday: 'long' }),
+            currentYear: today.getFullYear()
+        }
     }
 };
