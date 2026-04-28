@@ -13,8 +13,7 @@ const ReportService = {
         const table = body.getTables()[0];
 
         this.populatePlaceholders(body, {
-            ...courseMetadata,
-            ...Utils.getFormattedDates(courseMetadata.rawDate),
+            ...Utils.getFormattedDates(courseMetadata),
             'NOM': student.name
         });
 
@@ -65,7 +64,7 @@ const ReportService = {
             newRow.replaceText("{{PEND}}", subjectData.pending);
 
             // Insert relative to the template row index
-            table.insertRow(CONFIG.TEMPLATE_ROW_INDEX + insertionOffset, newRow);
+            table.insertTableRow(CONFIG.TEMPLATE_ROW_INDEX + insertionOffset, newRow);
             insertionOffset++;
         });
 

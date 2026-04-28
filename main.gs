@@ -41,12 +41,14 @@ function processGroupReports(groupName, parentFolder) {
     const templateFile = DriveApp.getFileById(CONFIG.TEMPLATE_FILE_ID);
 
     const rawData = Utils.getSheetData(groupName);
+    const rawMetadata = Utils.getSheetData('Inici');
 
     // 1. Parse Data (Domain Layer)
-    const students = DataParser.parse(rawData);
+    const students = DataParser.parseStudentData(rawData);
+    const metadata = DataParser.parseMetadata(rawMetadata);
 
     // 2. Generate Reports (Presentation Layer)
     students.forEach(student => {
-        ReportService.generateStudentReport(student, templateFile, destinationFolder);
+        ReportService.createStudentReport(student, metadata, templateFile, destinationFolder);
     });
 }

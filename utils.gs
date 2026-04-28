@@ -3,7 +3,11 @@
  */
 const Utils = {
     getSheetData: function (sheetName) {
+        const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
 
+        if (!sheet) throw new Error(`Sheet "${sheetName}" not found.`);
+
+        return sheet.getDataRange().getValues();
     },
 
     // Slice the row to exclude the fixed start columns (Name) and fixed end columns}
@@ -13,12 +17,11 @@ const Utils = {
 
     getFormattedDates: function (dateObj) {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const today = new Date();
 
         return {
-            currentDate: today.toLocaleDateString(CONFIG.DATE_LOCALE, options),
-            currentDayOfWeek: today.toLocaleDateString(CONFIG.DATE_LOCALE, { weekday: 'long' }),
-            currentYear: today.getFullYear()
+            currentDate: dateObj.currentDate,
+            currentDayOfWeek: dateObj.currentDayOfWeek,
+            currentYear: dateObj.currentYear
         }
     }
 };
