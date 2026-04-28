@@ -9,7 +9,6 @@ const ReportService = {
         const doc = DocumentApp.openById(fileCopy.getId());
 
         const body = doc.getBody();
-        const header = doc.getHeader();
         const table = body.getTables()[0];
 
         this.populatePlaceholders(body, {

@@ -47,6 +47,6 @@ function processGroupReports(groupName, parentFolder) {
 
     // 2. Generate Reports (Presentation Layer)
     students.forEach(student => {
-        ReportService.generateStudentReport(student, templateFile, destinationFolder);
+        //ReportService.generateStudentReport(student, templateFile, destinationFolder);
     });
 }
