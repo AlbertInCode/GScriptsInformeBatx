@@ -1,9 +1,9 @@
 const DataParser = {
     parseStudentData: function (values) {
-        const subjectNames = this.extractSubjectNames(values[0]); // ALBERT: Try to know value index
+        const subjectNames = this.extractSubjectNames(values[1]); // ALBERT: Try to know value index
 
         // Slice the array to get only student rows
-        const studentRows = values.slice(1); // ALBERT: Change start and end columns        
+        const studentRows = values.slice(2); // ALBERT: Change start and end columns        
 
         return studentRows.map(row => {
             const studentName = row[0];
@@ -36,5 +36,14 @@ const DataParser = {
         });
 
         return subjectsMap;
+    },
+
+    extractMetadata: function (values) {
+        return {
+            currentDate: values[0][1], // dia entrega
+            retakeStartDate: values[1][1],
+            retakeEndDate: values[2][1],
+            reportDate: values[3][1]
+        };
     }
 }
